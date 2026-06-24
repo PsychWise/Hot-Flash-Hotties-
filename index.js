@@ -226,10 +226,13 @@ app.get('/subscription/:userId', async (req, res) => {
 
     if (error && error.code !== 'PGRST116') {
       throw error;
-    }
+    
 
+    }
     res.json(data || { status: 'inactive', tier: 'free' });
-  } catch (error) {
+
+}      
+} catch (error) {
     console.error('Error fetching subscription:', error);
     res.status(500).json({ error: error.message });
   }

@@ -232,7 +232,7 @@ app.get('/subscription/:userId', async (req, res) => {
     res.json(data || { status: 'inactive', tier: 'free' });
     }
       
-} catch (error) {
+ catch (error) {
     console.error('Error fetching subscription:', error);
     res.status(500).json({ error: error.message });
   }

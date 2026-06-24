@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { createClient } = require('@supabase/supabase-js');
-
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -19,8 +19,7 @@ app.use(express.json());
 
 // Health check
 app.get('/', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
+  res.sendFile(path.join(__dirname, 'index.html'));
 
 // Create Stripe Checkout Session
 app.post('/create-checkout-session', async (req, res) => {
